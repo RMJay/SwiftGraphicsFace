@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B430EC7E223D4E0D006C9FCC /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430EC7D223D4E0D006C9FCC /* RGBColor.swift */; };
 		B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B7F22317C1D00522998 /* AppDelegate.swift */; };
 		B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B8122317C1D00522998 /* ViewController.swift */; };
 		B4AD9B8422317C1E00522998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4AD9B8322317C1E00522998 /* Assets.xcassets */; };
 		B4AD9B8722317C1E00522998 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4AD9B8522317C1E00522998 /* Main.storyboard */; };
 		B4AD9B9322317C1E00522998 /* SwiftGraphicsFaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B9222317C1E00522998 /* SwiftGraphicsFaceTests.swift */; };
 		B4AD9B9E22317C1E00522998 /* SwiftGraphicsFaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B9D22317C1E00522998 /* SwiftGraphicsFaceUITests.swift */; };
-		B4AD9BAC2232D07600522998 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9BAB2232D07600522998 /* FaceView.swift */; };
-		B4AD9BAE223574B300522998 /* PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9BAD223574B300522998 /* PixelBuffer.swift */; };
+		B4AD9BAC2232D07600522998 /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9BAB2232D07600522998 /* RenderView.swift */; };
+		B4AD9BAE223574B300522998 /* PixelContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9BAD223574B300522998 /* PixelContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B430EC7D223D4E0D006C9FCC /* RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
 		B4AD9B7C22317C1D00522998 /* SwiftGraphicsFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGraphicsFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AD9B7F22317C1D00522998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4AD9B8122317C1D00522998 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,8 +50,8 @@
 		B4AD9B9922317C1E00522998 /* SwiftGraphicsFaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGraphicsFaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AD9B9D22317C1E00522998 /* SwiftGraphicsFaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGraphicsFaceUITests.swift; sourceTree = "<group>"; };
 		B4AD9B9F22317C1E00522998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4AD9BAB2232D07600522998 /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
-		B4AD9BAD223574B300522998 /* PixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelBuffer.swift; sourceTree = "<group>"; };
+		B4AD9BAB2232D07600522998 /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
+		B4AD9BAD223574B300522998 /* PixelContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +104,13 @@
 			children = (
 				B4AD9B7F22317C1D00522998 /* AppDelegate.swift */,
 				B4AD9B8122317C1D00522998 /* ViewController.swift */,
-				B4AD9BAB2232D07600522998 /* FaceView.swift */,
-				B4AD9BAD223574B300522998 /* PixelBuffer.swift */,
+				B4AD9BAB2232D07600522998 /* RenderView.swift */,
+				B4AD9BAD223574B300522998 /* PixelContext.swift */,
 				B4AD9B8322317C1E00522998 /* Assets.xcassets */,
 				B4AD9B8522317C1E00522998 /* Main.storyboard */,
 				B4AD9B8822317C1E00522998 /* Info.plist */,
 				B4AD9B8922317C1E00522998 /* SwiftGraphicsFace.entitlements */,
+				B430EC7D223D4E0D006C9FCC /* RGBColor.swift */,
 			);
 			path = SwiftGraphicsFace;
 			sourceTree = "<group>";
@@ -260,10 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4AD9BAE223574B300522998 /* PixelBuffer.swift in Sources */,
+				B430EC7E223D4E0D006C9FCC /* RGBColor.swift in Sources */,
+				B4AD9BAE223574B300522998 /* PixelContext.swift in Sources */,
 				B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */,
 				B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */,
-				B4AD9BAC2232D07600522998 /* FaceView.swift in Sources */,
+				B4AD9BAC2232D07600522998 /* RenderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
