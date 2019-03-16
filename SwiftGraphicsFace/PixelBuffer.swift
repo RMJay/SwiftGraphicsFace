@@ -7,56 +7,83 @@
 //
 import Foundation
 
-class PixelBuffer {
-    private static let bytesPerPixel = 4
-    private static let rowAlignment = 64
-    
-    let width: Int
-    let height: Int
-    let bytesPerRow: Int
-    private let data: UnsafeMutablePointer<UInt32>
-    
-    var baseAddress: UnsafeRawPointer {
-        return data
-    }
-    
-    init(width: Int, height: Int) {
-        self.width = width
-        self.height = height
-        let n = width * PixelBuffer.bytesPerPixel
+class PixelContext {
 
-        if n % PixelBuffer.rowAlignment == 0 {
-            bytesPerRow = n
-        } else {
-            bytesPerRow = (n / PixelBuffer.rowAlignment + 1) * PixelBuffer.rowAlignment
-        }
-        
-        
+    private var _width: Int
+    private var _height: Int
+    private var pixBuf: UnsafeMutablePointer<UInt32>
+    
+    init() {
+        _width = 0
+        _height = 0
+        pixBuf = UnsafeMutablePointer<UInt32>.allocate(capacity: 1)
+        pixBuf.initialize(repeating: 0, count: 1)
+    }
+
+    var width: Int {
+        return _width
+    }
+
+    var height: Int {
+        return _height
     }
     
+    func resize(width: Int, height: Int) {
+        _width = width
+        _height = height
+        let numPixels = width * height
+        
+        pixBuf.deallocate()
+        pixBuf = UnsafeMutablePointer<UInt32>.allocate(capacity: numPixels)
+        pixBuf.initialize(repeating: 0, count: numPixels)
+    }
+
     deinit {
-        
+        pixBuf.deallocate()
     }
-    
+
     func setRGB(x: Int, y: Int, r: UInt8, g: UInt8, b: UInt8) {
-        var rgb: UInt32 = UInt32(r)
-        rgb = (rgb << 8) + UInt32(g)
-        rgb = (rgb << 8) + UInt32(b)
-        let row = baseAddress.advanced(by: y * bytesPerRow)
-            .bindMemory(to: UInt32.self, capacity: width)
-        row.advanced(by: x).pointee = rgb
-        //buf.advanced(by: y * bytesPerRow + x).pointee = rgb
+        let pixPtr = pixBuf.advanced(by: y * width + x)
+        pixPtr.withMemoryRebound(to: UInt8.self, capacity: 4) {
+            $0.advanced(by: 1).pointee = r
+            $0.advanced(by: 2).pointee = g
+            $0.advanced(by: 3).pointee = b
+        }
     }
 
     func getRGB(x: Int, y: Int) -> (r: UInt8, g: UInt8, b: UInt8) {
-        let row = baseAddress
-            .advanced(by: y * bytesPerRow)
-            .bindMemory(to: UInt32.self, capacity: width)
-        let rgb = row.advanced(by: x).pointee
-        let r = UInt8(rgb >> 16)
-        let g = UInt8(rgb >> 8)
-        let b = UInt8(rgb)
-        return (r: r, g: g, b: b)
+        let pixPtr = pixBuf.advanced(by: y * width + x)
+        return pixPtr.withMemoryRebound(to: UInt8.self, capacity: 4) {
+            let r = $0.advanced(by: 1).pointee
+            let g = $0.advanced(by: 2).pointee
+            let b = $0.advanced(by: 3).pointee
+            return (r: r, g: g, b: b)
+        }
+    }
+
+    func getImage() -> CGImage? {
+        let data = NSData(bytes: pixBuf, length: width * height * MemoryLayout<UInt32>.size)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo.byteOrder32Big.rawValue |
+                                                CGImageAlphaInfo.noneSkipFirst.rawValue)
+
+        if  let dataProvider = CGDataProvider(data: data),
+            let image = CGImage(
+                width: width,
+                height: height,
+                bitsPerComponent: 8,
+                bitsPerPixel: 32,
+                bytesPerRow: width * MemoryLayout<UInt32>.size,
+                space: CGColorSpaceCreateDeviceRGB(),
+                bitmapInfo: bitmapInfo,
+                provider: dataProvider,
+                decode: nil, //used to produce some effects e.g. invert colors
+                shouldInterpolate: false,
+                intent: CGColorRenderingIntent.defaultIntent)
+        {
+            return image
+        } else {
+            return nil
+        }
     }
 
 }
