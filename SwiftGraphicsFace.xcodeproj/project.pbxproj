@@ -15,6 +15,9 @@
 		B43CEA8B2246824600F802CF /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8A2246824600F802CF /* Point3D.swift */; };
 		B43CEA8D2246839A00F802CF /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8C2246839A00F802CF /* Vector3D.swift */; };
 		B43CEA8F224683E200F802CF /* ColorRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8E224683E200F802CF /* ColorRGB.swift */; };
+		B43ECA20224FE7AE00E629C5 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */; };
+		B44B55D6224D1D5A00185074 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B55D5224D1D5A00185074 /* Matrix3x3.swift */; };
+		B44B55D8224D302E00185074 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B55D7224D302E00185074 /* Matrix.swift */; };
 		B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B7F22317C1D00522998 /* AppDelegate.swift */; };
 		B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B8122317C1D00522998 /* ViewController.swift */; };
 		B4AD9B8422317C1E00522998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4AD9B8322317C1E00522998 /* Assets.xcassets */; };
@@ -55,6 +58,9 @@
 		B43CEA8A2246824600F802CF /* Point3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point3D.swift; sourceTree = "<group>"; };
 		B43CEA8C2246839A00F802CF /* Vector3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3D.swift; sourceTree = "<group>"; };
 		B43CEA8E224683E200F802CF /* ColorRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRGB.swift; sourceTree = "<group>"; };
+		B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
+		B44B55D5224D1D5A00185074 /* Matrix3x3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
+		B44B55D7224D302E00185074 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		B4AD9B7C22317C1D00522998 /* SwiftGraphicsFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGraphicsFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AD9B7F22317C1D00522998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4AD9B8122317C1D00522998 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +157,10 @@
 				B43CEA8E224683E200F802CF /* ColorRGB.swift */,
 				B43CEA8A2246824600F802CF /* Point3D.swift */,
 				B4C97B732247EE08003AB8C7 /* Transform3D.swift */,
+				B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */,
+				B44B55D5224D1D5A00185074 /* Matrix3x3.swift */,
 				B4C97B752247FCEA003AB8C7 /* Matrix4x4.swift */,
+				B44B55D7224D302E00185074 /* Matrix.swift */,
 			);
 			path = SwiftGraphicsFace;
 			sourceTree = "<group>";
@@ -313,13 +322,16 @@
 				B43CEA8F224683E200F802CF /* ColorRGB.swift in Sources */,
 				B43CEA8D2246839A00F802CF /* Vector3D.swift in Sources */,
 				B4AD9BAE223574B300522998 /* PixelContext.swift in Sources */,
+				B43ECA20224FE7AE00E629C5 /* Matrix2x2.swift in Sources */,
 				B4C97B762247FCEA003AB8C7 /* Matrix4x4.swift in Sources */,
 				B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */,
 				B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */,
 				B430EC85223FCE36006C9FCC /* Object3DReader.swift in Sources */,
 				B43CEA8522457ED600F802CF /* LineReader.swift in Sources */,
+				B44B55D8224D302E00185074 /* Matrix.swift in Sources */,
 				B4AD9BAC2232D07600522998 /* RenderView.swift in Sources */,
 				B43CEA8B2246824600F802CF /* Point3D.swift in Sources */,
+				B44B55D6224D1D5A00185074 /* Matrix3x3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
