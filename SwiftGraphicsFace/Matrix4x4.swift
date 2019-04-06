@@ -65,7 +65,7 @@ struct Matrix4x4 {
             case (1,0): _10 = newValue
             case (1,1): _11 = newValue
             case (1,2): _12 = newValue
-            case (1,2): _13 = newValue
+            case (1,3): _13 = newValue
                 
             case (2,0): _20 = newValue
             case (2,1): _21 = newValue
@@ -97,30 +97,6 @@ struct Matrix4x4 {
         return m
     }
     
-    static func * (l: Double, r: Matrix4x4) -> Matrix4x4 {
-        var m = Matrix4x4.zero
-        m[0,0] = l * r[0,0]
-        m[0,1] = l * r[0,1]
-        m[0,2] = l * r[0,2]
-        m[0,3] = l * r[0,3]
-        
-        m[1,0] = l * r[1,0]
-        m[1,1] = l * r[1,1]
-        m[1,2] = l * r[1,2]
-        m[1,3] = l * r[1,3]
-        
-        m[2,0] = l * r[2,0]
-        m[2,1] = l * r[2,1]
-        m[2,2] = l * r[2,2]
-        m[2,3] = l * r[2,3]
-        
-        m[3,0] = l * r[3,0]
-        m[3,1] = l * r[3,1]
-        m[3,2] = l * r[3,2]
-        m[3,3] = l * r[3,3]
-        return m
-    }
-    
     static func multiply(_ a: Matrix4x4, _ b: Matrix4x4) -> Matrix4x4 {
         var m = Matrix4x4.zero
         for i in 0..<4 {
@@ -132,58 +108,4 @@ struct Matrix4x4 {
         }
         return m
     }
-    
-    func transposed() -> Matrix4x4 {
-        var m = Matrix4x4.zero
-        for i in 0..<4 {
-            for j in 0..<4 {
-                m[i,j] = self[j,i]
-            }
-        }
-        return m
-    }
-    
-    func det() -> Double {
-        var result: Double
-        for i in 0..<4 {
-            result += self[0,i] * cofactor(0,i)
-        }
-        return result
-    }
-    
-    func cofactor(_ row: Int, _ col: Int) -> Double {
-        let subDet = submatrix(row, col).det()
-        return (row + col) & 0b1 == 0 ? subDet : -subDet
-    }
-    
-    func submatrix(_ row: Int, _ col: Int) -> Matrix3x3 {
-        var m = Matrix3x3.zero
-        for (k, i) in zip(0..., Array(0..<4).filter{ $0 != row }) {
-            for (l, j) in zip(0..., Array(0..<4).filter{ $0 != col }) {
-                m[k,l] = self[i,j]
-            }
-        }
-        return m
-    }
-    
-    func inverse() -> Matrix4x4 {
-        let adjoint = self.adjoint()
-        var det = 0.0
-        for i in 0..<4 {
-            det += self[0,i] * adjoint[i,0]
-        }
-        return (1.0/det) * adjoint
-    }
-    
-    //adjoint is the transpose of the cofactor matrix
-    func adjoint() -> Matrix4x4 {
-        var m = Matrix4x4.zero
-        for i in 0..<4 {
-            for j in 0..<4 {
-                m[i,j] = cofactor(j,i)
-            }
-        }
-        return m
-    }
-    
 }

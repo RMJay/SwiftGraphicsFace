@@ -11,6 +11,6 @@ import Foundation
 struct Triangle3D {
     let vertexes: [Point3D]
     let colors: [ColorRGB] //the color at each vertex
-    let faceNormal: Vector3D
-    let normals: [Vector3D] //the normal vector at each vertex
+    let normals: [VectorXYZ] //the normal vector at each vertex
+    let faceNormal: VectorXYZ
 }

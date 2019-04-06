@@ -47,27 +47,5 @@ struct Matrix2x2 {
         }
         return m
     }
-    
-    static func * (l: Double, r: Matrix2x2) -> Matrix2x2 {
-        var m = Matrix2x2.zero
-        m[0,0] = l * r[0,0]
-        m[0,1] = l * r[0,1]
-        m[1,0] = l * r[1,0]
-        m[1,1] = l * r[1,1]
-        return m
-    }
-    
-    func det() -> Double {
-        return _00 * _11 - _01 * _10
-    }
-    
-    func inverse() -> Matrix2x2 {
-        let adjoint = self.adjoint()
-        let det = self[0,0] * self[1,1] - self[0,1] * self[1,0]
-        return (1.0/det) * adjoint
-    }
-    
-    func adjoint() -> Matrix2x2 {
-        return Matrix2x2(_00: _11, _01: -_01, _10: -_10, _11: _00)
-    }
+
 }

@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B430EC7E223D4E0D006C9FCC /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430EC7D223D4E0D006C9FCC /* RGBColor.swift */; };
+		B418D9032254FACF00157DB4 /* ScreenSpaceTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D9022254FACF00157DB4 /* ScreenSpaceTriangle.swift */; };
+		B418D9092254FE6400157DB4 /* RectInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D9082254FE6400157DB4 /* RectInt.swift */; };
+		B418D90B2254FFCE00157DB4 /* VectorXY.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D90A2254FFCE00157DB4 /* VectorXY.swift */; };
+		B418D90D2255030800157DB4 /* VectorXYZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D90C2255030800157DB4 /* VectorXYZ.swift */; };
+		B418D90F2255037700157DB4 /* VectorXYW.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D90E2255037700157DB4 /* VectorXYW.swift */; };
+		B418D9112255052900157DB4 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D9102255052900157DB4 /* Point2D.swift */; };
 		B430EC85223FCE36006C9FCC /* Object3DReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430EC84223FCE36006C9FCC /* Object3DReader.swift */; };
 		B430EC87223FCEF5006C9FCC /* Object3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430EC86223FCEF5006C9FCC /* Object3D.swift */; };
 		B43CEA8522457ED600F802CF /* LineReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8422457ED600F802CF /* LineReader.swift */; };
 		B43CEA89224681D700F802CF /* Triangle3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA88224681D700F802CF /* Triangle3D.swift */; };
 		B43CEA8B2246824600F802CF /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8A2246824600F802CF /* Point3D.swift */; };
-		B43CEA8D2246839A00F802CF /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8C2246839A00F802CF /* Vector3D.swift */; };
 		B43CEA8F224683E200F802CF /* ColorRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8E224683E200F802CF /* ColorRGB.swift */; };
 		B43ECA20224FE7AE00E629C5 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */; };
 		B44B55D6224D1D5A00185074 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B55D5224D1D5A00185074 /* Matrix3x3.swift */; };
-		B44B55D8224D302E00185074 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B55D7224D302E00185074 /* Matrix.swift */; };
 		B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B7F22317C1D00522998 /* AppDelegate.swift */; };
 		B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B8122317C1D00522998 /* ViewController.swift */; };
 		B4AD9B8422317C1E00522998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4AD9B8322317C1E00522998 /* Assets.xcassets */; };
@@ -50,17 +53,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B430EC7D223D4E0D006C9FCC /* RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
+		B418D9022254FACF00157DB4 /* ScreenSpaceTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSpaceTriangle.swift; sourceTree = "<group>"; };
+		B418D9082254FE6400157DB4 /* RectInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectInt.swift; sourceTree = "<group>"; };
+		B418D90A2254FFCE00157DB4 /* VectorXY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorXY.swift; sourceTree = "<group>"; };
+		B418D90C2255030800157DB4 /* VectorXYZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorXYZ.swift; sourceTree = "<group>"; };
+		B418D90E2255037700157DB4 /* VectorXYW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorXYW.swift; sourceTree = "<group>"; };
+		B418D9102255052900157DB4 /* Point2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point2D.swift; sourceTree = "<group>"; };
 		B430EC84223FCE36006C9FCC /* Object3DReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DReader.swift; sourceTree = "<group>"; };
 		B430EC86223FCEF5006C9FCC /* Object3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3D.swift; sourceTree = "<group>"; };
 		B43CEA8422457ED600F802CF /* LineReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
 		B43CEA88224681D700F802CF /* Triangle3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle3D.swift; sourceTree = "<group>"; };
 		B43CEA8A2246824600F802CF /* Point3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point3D.swift; sourceTree = "<group>"; };
-		B43CEA8C2246839A00F802CF /* Vector3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3D.swift; sourceTree = "<group>"; };
 		B43CEA8E224683E200F802CF /* ColorRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRGB.swift; sourceTree = "<group>"; };
 		B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
 		B44B55D5224D1D5A00185074 /* Matrix3x3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
-		B44B55D7224D302E00185074 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		B4AD9B7C22317C1D00522998 /* SwiftGraphicsFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGraphicsFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AD9B7F22317C1D00522998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4AD9B8122317C1D00522998 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,17 +156,20 @@
 				B4AD9B8522317C1E00522998 /* Main.storyboard */,
 				B4AD9B8822317C1E00522998 /* Info.plist */,
 				B4AD9B8922317C1E00522998 /* SwiftGraphicsFace.entitlements */,
-				B430EC7D223D4E0D006C9FCC /* RGBColor.swift */,
 				B43CEA8422457ED600F802CF /* LineReader.swift */,
+				B418D9022254FACF00157DB4 /* ScreenSpaceTriangle.swift */,
 				B43CEA88224681D700F802CF /* Triangle3D.swift */,
-				B43CEA8C2246839A00F802CF /* Vector3D.swift */,
+				B418D90A2254FFCE00157DB4 /* VectorXY.swift */,
+				B418D90C2255030800157DB4 /* VectorXYZ.swift */,
+				B418D90E2255037700157DB4 /* VectorXYW.swift */,
+				B418D9082254FE6400157DB4 /* RectInt.swift */,
 				B43CEA8E224683E200F802CF /* ColorRGB.swift */,
 				B43CEA8A2246824600F802CF /* Point3D.swift */,
+				B418D9102255052900157DB4 /* Point2D.swift */,
 				B4C97B732247EE08003AB8C7 /* Transform3D.swift */,
 				B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */,
 				B44B55D5224D1D5A00185074 /* Matrix3x3.swift */,
 				B4C97B752247FCEA003AB8C7 /* Matrix4x4.swift */,
-				B44B55D7224D302E00185074 /* Matrix.swift */,
 			);
 			path = SwiftGraphicsFace;
 			sourceTree = "<group>";
@@ -251,13 +260,16 @@
 				TargetAttributes = {
 					B4AD9B7B22317C1D00522998 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					B4AD9B8D22317C1E00522998 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = B4AD9B7B22317C1D00522998;
 					};
 					B4AD9B9822317C1E00522998 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = B4AD9B7B22317C1D00522998;
 					};
 				};
@@ -318,18 +330,21 @@
 				B4C97B742247EE08003AB8C7 /* Transform3D.swift in Sources */,
 				B43CEA89224681D700F802CF /* Triangle3D.swift in Sources */,
 				B430EC87223FCEF5006C9FCC /* Object3D.swift in Sources */,
-				B430EC7E223D4E0D006C9FCC /* RGBColor.swift in Sources */,
 				B43CEA8F224683E200F802CF /* ColorRGB.swift in Sources */,
-				B43CEA8D2246839A00F802CF /* Vector3D.swift in Sources */,
 				B4AD9BAE223574B300522998 /* PixelContext.swift in Sources */,
 				B43ECA20224FE7AE00E629C5 /* Matrix2x2.swift in Sources */,
+				B418D90D2255030800157DB4 /* VectorXYZ.swift in Sources */,
 				B4C97B762247FCEA003AB8C7 /* Matrix4x4.swift in Sources */,
 				B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */,
 				B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */,
 				B430EC85223FCE36006C9FCC /* Object3DReader.swift in Sources */,
+				B418D90B2254FFCE00157DB4 /* VectorXY.swift in Sources */,
+				B418D90F2255037700157DB4 /* VectorXYW.swift in Sources */,
 				B43CEA8522457ED600F802CF /* LineReader.swift in Sources */,
-				B44B55D8224D302E00185074 /* Matrix.swift in Sources */,
 				B4AD9BAC2232D07600522998 /* RenderView.swift in Sources */,
+				B418D9112255052900157DB4 /* Point2D.swift in Sources */,
+				B418D9092254FE6400157DB4 /* RectInt.swift in Sources */,
+				B418D9032254FACF00157DB4 /* ScreenSpaceTriangle.swift in Sources */,
 				B43CEA8B2246824600F802CF /* Point3D.swift in Sources */,
 				B44B55D6224D1D5A00185074 /* Matrix3x3.swift in Sources */,
 			);
@@ -507,7 +522,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = RecordStreet.SwiftGraphicsFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -525,7 +540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = RecordStreet.SwiftGraphicsFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -544,7 +559,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = RecordStreet.SwiftGraphicsFaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftGraphicsFace.app/Contents/MacOS/SwiftGraphicsFace";
 			};
 			name = Debug;
@@ -564,7 +579,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = RecordStreet.SwiftGraphicsFaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftGraphicsFace.app/Contents/MacOS/SwiftGraphicsFace";
 			};
 			name = Release;
@@ -583,7 +598,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = RecordStreet.SwiftGraphicsFaceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = SwiftGraphicsFace;
 			};
 			name = Debug;
@@ -602,7 +617,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = RecordStreet.SwiftGraphicsFaceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = SwiftGraphicsFace;
 			};
 			name = Release;

@@ -57,7 +57,7 @@ class Object3DReader {
             
             let v0ToV1 = vertexes[1] - vertexes[0]
             let v0ToV2 = vertexes[2] - vertexes[0]
-            let faceNormal = (v0ToV1 ⨯ v0ToV2).normalized()
+            let faceNormal = VectorXYZ.cross(v0ToV1,v0ToV2).normalized()
             
             let triangleData = TriangleData(vertexes: vertexes,
                                             vertexIndexes: vertexIndexes,
@@ -72,9 +72,9 @@ class Object3DReader {
         
         let triangles = triangleDataAcc.map{ triangleData -> Triangle3D in
             let normals = triangleData.vertexIndexes
-                .map{ vertexIndex -> Vector3D in
+                .map{ vertexIndex -> VectorXYZ in
                     let adjacentTriangles = adjacencyList[vertexIndex]!
-                    var sumNormal = Vector3D(x: 0.0, y: 0.0, z: 0.0)
+                    var sumNormal = VectorXYZ(x: 0.0, y: 0.0, z: 0.0)
                     for triangle in adjacentTriangles {
                         sumNormal += triangle.faceNormal
                     }
@@ -82,8 +82,8 @@ class Object3DReader {
                 }
             return Triangle3D(vertexes: triangleData.vertexes,
                               colors: triangleData.colors,
-                              faceNormal: triangleData.faceNormal,
-                              normals: normals)
+                              normals: normals,
+                              faceNormal: triangleData.faceNormal)
             }
         
         return Object3D(triangles: triangles)
@@ -104,5 +104,5 @@ fileprivate struct TriangleData {
     let vertexes: [Point3D]
     let vertexIndexes: [Int]
     let colors: [ColorRGB] //the color at each vertex
-    let faceNormal: Vector3D
+    let faceNormal: VectorXYZ
 }

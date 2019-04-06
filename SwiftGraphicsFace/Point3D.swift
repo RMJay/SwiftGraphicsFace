@@ -13,8 +13,11 @@ struct Point3D {
     let y: Double
     let z: Double
 
-    static func -(l: Point3D, r: Point3D) -> Vector3D {
-        return Vector3D(x: l.x - r.x, y: l.y - r.y, z: l.z - r.z)
+    static func -(l: Point3D, r: Point3D) -> VectorXYZ {
+        return VectorXYZ(x: l.x - r.x, y: l.y - r.y, z: l.z - r.z)
     }
 
+    func to2D() -> Point2D {
+        return Point2D(x: x, y: y)
+    }
 }
