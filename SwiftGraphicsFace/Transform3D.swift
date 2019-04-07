@@ -43,6 +43,14 @@ struct Transform3D {
         return Transform3D(matrix: Matrix4x4.multiply(t, self.matrix))
     }
     
+    func translatedBy(_ point: Point3D) -> Transform3D {
+        var t = Matrix4x4.identity
+        t[0,3] = point.x
+        t[1,3] = point.y
+        t[2,3] = point.z
+        return Transform3D(matrix: Matrix4x4.multiply(t, self.matrix))
+    }
+    
     func rotatedBy(θx: Double, θy: Double) -> Transform3D {
         var rx = Matrix4x4.identity
         rx[1,1] = cos(θx)

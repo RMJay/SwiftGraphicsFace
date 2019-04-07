@@ -11,6 +11,8 @@ class RenderView: NSView {
     
     private let pixelContext = PixelContext()
     private var object3D: Object3D!
+    private var lightSource = Point3D(x: 100_000, y: 100_000, z: 200_000)
+    private var lightGraphic = Sphere(radius: 8_000)
     
     var rotation = Transform3D.identity
         .rotatedBy(θx: 0, θy: Double.pi)
@@ -92,10 +94,21 @@ class RenderView: NSView {
     func centerAndScale(pixelWidth: Double, pixelHeight: Double) {
         let transform = Transform3D.identity
             .applying(rotation)
-        let vertexes = object3D.triangles
+        
+        let lightTransform = Transform3D.identity
+            .translatedBy(lightSource)
+        
+        let objVertexes = object3D.triangles
             .flatMap{ $0.vertexes }
             .map{ $0.applying(transform) }
-        let objectBounds = Bounds.enclosing(points: vertexes)
+        
+        let lightGraphicVertexes = lightGraphic.triangles
+            .flatMap{ $0.vertexes }
+            .map{ $0.applying(lightTransform) }
+            .map{ $0.applying(transform) }
+        
+        let allVertexes = objVertexes + lightGraphicVertexes
+        let objectBounds = Bounds.enclosing(points: allVertexes)
         
         let sx = pixelWidth / objectBounds.width * 0.8
         let sy = pixelHeight / objectBounds.height * 0.8
@@ -108,14 +121,22 @@ class RenderView: NSView {
     }
     
     func renderObject(in pixelContext: PixelContext) {
-        let transform = Transform3D.identity
+        let cameraTransform = Transform3D.identity
             .applying(rotation)
             .applying(zoom)
             .applying(scroll)
         
+        let lightTransform = Transform3D.identity
+            .translatedBy(lightSource)
+        
         object3D.triangles
-            .map{ ScreenSpaceTriangle(from: $0, applying: transform) }
+            .map{ ScreenSpaceTriangle(from: $0, applying: cameraTransform) }
             .forEach{ $0.drawPolygon(in: pixelContext, fill: .white, stroke: .maraschino) }
+        
+        lightGraphic.triangles
+            .map{ $0.applying(lightTransform) }
+            .map{ ScreenSpaceTriangle(from: $0, applying: cameraTransform) }
+            .forEach{ $0.drawPolygon(in: pixelContext, fill: .lemon, stroke: .tangerine) }
     }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Object3D {
+struct Object3D {
     let triangles: [Triangle3D]
     
     init(triangles: [Triangle3D]) {

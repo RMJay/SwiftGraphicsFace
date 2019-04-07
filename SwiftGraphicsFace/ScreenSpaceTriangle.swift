@@ -126,5 +126,9 @@ struct ScreenSpaceTriangle {
         let bary0 = 1.0 - bary1 - bary2
         return BaryCentric(bary0, bary1, bary2)
     }
+    
+//    func drawFlat(in pixelContext: PixelContext, lightPosition: Point3D) {
+//        let directionToLightSource = 
+//    }
 
 }

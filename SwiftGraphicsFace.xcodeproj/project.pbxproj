@@ -22,6 +22,7 @@
 		B43CEA8F224683E200F802CF /* ColorRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8E224683E200F802CF /* ColorRGB.swift */; };
 		B43ECA20224FE7AE00E629C5 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */; };
 		B441FA13225A776E00F2C01A /* BaryCentric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441FA12225A776E00F2C01A /* BaryCentric.swift */; };
+		B441FA15225A7BAE00F2C01A /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441FA14225A7BAE00F2C01A /* Sphere.swift */; };
 		B44B55D6224D1D5A00185074 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B55D5224D1D5A00185074 /* Matrix3x3.swift */; };
 		B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B7F22317C1D00522998 /* AppDelegate.swift */; };
 		B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B8122317C1D00522998 /* ViewController.swift */; };
@@ -70,6 +71,7 @@
 		B43CEA8E224683E200F802CF /* ColorRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRGB.swift; sourceTree = "<group>"; };
 		B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
 		B441FA12225A776E00F2C01A /* BaryCentric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaryCentric.swift; sourceTree = "<group>"; };
+		B441FA14225A7BAE00F2C01A /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
 		B44B55D5224D1D5A00185074 /* Matrix3x3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
 		B4AD9B7C22317C1D00522998 /* SwiftGraphicsFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGraphicsFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AD9B7F22317C1D00522998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				B4AD9B7F22317C1D00522998 /* AppDelegate.swift */,
 				B430EC86223FCEF5006C9FCC /* Object3D.swift */,
+				B441FA14225A7BAE00F2C01A /* Sphere.swift */,
 				B430EC84223FCE36006C9FCC /* Object3DReader.swift */,
 				B4AD9B8122317C1D00522998 /* ViewController.swift */,
 				B4AD9BAB2232D07600522998 /* RenderView.swift */,
@@ -336,6 +339,7 @@
 				B4C97B742247EE08003AB8C7 /* Transform3D.swift in Sources */,
 				B43CEA89224681D700F802CF /* Triangle3D.swift in Sources */,
 				B430EC87223FCEF5006C9FCC /* Object3D.swift in Sources */,
+				B441FA15225A7BAE00F2C01A /* Sphere.swift in Sources */,
 				B43CEA8F224683E200F802CF /* ColorRGB.swift in Sources */,
 				B4AD9BAE223574B300522998 /* PixelContext.swift in Sources */,
 				B43ECA20224FE7AE00E629C5 /* Matrix2x2.swift in Sources */,

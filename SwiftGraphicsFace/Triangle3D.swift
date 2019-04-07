@@ -13,4 +13,11 @@ struct Triangle3D {
     let colors: [ColorRGB] //the color at each vertex
     let normals: [VectorXYZ] //the normal vector at each vertex
     let faceNormal: VectorXYZ
+    
+    func applying(_ transform: Transform3D) -> Triangle3D {
+        return Triangle3D(vertexes: vertexes.map{ $0.applying(transform) },
+                          colors: colors,
+                          normals: normals,
+                          faceNormal: faceNormal)
+    }
 }
