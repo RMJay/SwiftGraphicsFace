@@ -9,15 +9,18 @@ import Cocoa
 
 class RenderView: NSView {
     
-    let pixelContext = PixelContext()
+    private let pixelContext = PixelContext()
+    private var object3D: Object3D!
+    
     var rotation = Transform3D.identity
-        .rotatedBy(θx: Double.pi, θy: 0.0)
+        .rotatedBy(θx: 0, θy: Double.pi)
         .scaledBy(sx: 1.0, sy: -1.0, sz: 1.0)
     var zoom = Transform3D.identity
     var scroll = Transform3D.identity
     
-    var triangles = [ScreenSpaceTriangle]()
-    var modelBounds: Rectangle? = nil
+    func setObject3D(_ object3D: Object3D) {
+        self.object3D = object3D
+    }
     
     override func draw(_ dirtyRect: NSRect) {
         guard let currentContext = NSGraphicsContext.current?.cgContext else { return }
@@ -27,8 +30,7 @@ class RenderView: NSView {
         }
         
         drawBackground(in: pixelContext)
-        drawTestTriangles(in: pixelContext)
-        //drawModelBounds(in: PixelContext)
+        renderObject(in: pixelContext)
         
         if let image = pixelContext.getImage() {
             currentContext.draw(image, in: self.bounds)
@@ -81,12 +83,39 @@ class RenderView: NSView {
         let t0 = ScreenSpaceTriangle(v0: vertexes[0], v1: vertexes[1], v2: vertexes[2])
         let t1 = ScreenSpaceTriangle(v0: vertexes[3], v1: vertexes[4], v2: vertexes[5])
         let t2 = ScreenSpaceTriangle(v0: vertexes[6], v1: vertexes[7], v2: vertexes[8])
-
-        self.triangles = [t0, t1, t2]
-        self.modelBounds = self.triangles.reduce(Rectangle.null){ $0.union($1.bounds) }
         
-        t0.drawSolid(in: pixelContext, color: .spring)
-        t1.drawSolid(in: pixelContext, color: .maraschino)
-        t2.drawSolid(in: pixelContext, color: .tangerine)
+        t0.drawPolygon(in: pixelContext, fill: .white, stroke: .spring)
+        t1.drawPolygon(in: pixelContext, fill: .white, stroke: .maraschino)
+        t2.drawPolygon(in: pixelContext, fill: .white, stroke: .tangerine)
     }
+    
+    func centerAndScale(pixelWidth: Double, pixelHeight: Double) {
+        let transform = Transform3D.identity
+            .applying(rotation)
+        let vertexes = object3D.triangles
+            .flatMap{ $0.vertexes }
+            .map{ $0.applying(transform) }
+        let objectBounds = Bounds.enclosing(points: vertexes)
+        
+        let sx = pixelWidth / objectBounds.width * 0.8
+        let sy = pixelHeight / objectBounds.height * 0.8
+        let s = sx < sy ? sx : sy
+        self.zoom = Transform3D.identity.scaledBy(s)
+        
+        let tx = pixelWidth / 2
+        let ty = pixelHeight / 2
+        self.scroll = Transform3D.identity.translatedBy(tx: tx, ty: ty, tz: 0)
+    }
+    
+    func renderObject(in pixelContext: PixelContext) {
+        let transform = Transform3D.identity
+            .applying(rotation)
+            .applying(zoom)
+            .applying(scroll)
+        
+        object3D.triangles
+            .map{ ScreenSpaceTriangle(from: $0, applying: transform) }
+            .forEach{ $0.drawPolygon(in: pixelContext, fill: .white, stroke: .maraschino) }
+    }
+    
 }

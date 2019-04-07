@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B418D9032254FACF00157DB4 /* ScreenSpaceTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D9022254FACF00157DB4 /* ScreenSpaceTriangle.swift */; };
-		B418D9092254FE6400157DB4 /* RectInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D9082254FE6400157DB4 /* RectInt.swift */; };
+		B418D9092254FE6400157DB4 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D9082254FE6400157DB4 /* Rectangle.swift */; };
 		B418D90B2254FFCE00157DB4 /* VectorXY.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D90A2254FFCE00157DB4 /* VectorXY.swift */; };
 		B418D90D2255030800157DB4 /* VectorXYZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D90C2255030800157DB4 /* VectorXYZ.swift */; };
 		B418D90F2255037700157DB4 /* VectorXYW.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D90E2255037700157DB4 /* VectorXYW.swift */; };
 		B418D9112255052900157DB4 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418D9102255052900157DB4 /* Point2D.swift */; };
+		B42C98A5225A36A00096490B /* Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42C98A4225A36A00096490B /* Bounds.swift */; };
 		B430EC85223FCE36006C9FCC /* Object3DReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430EC84223FCE36006C9FCC /* Object3DReader.swift */; };
 		B430EC87223FCEF5006C9FCC /* Object3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430EC86223FCEF5006C9FCC /* Object3D.swift */; };
 		B43CEA8522457ED600F802CF /* LineReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8422457ED600F802CF /* LineReader.swift */; };
@@ -54,11 +55,12 @@
 
 /* Begin PBXFileReference section */
 		B418D9022254FACF00157DB4 /* ScreenSpaceTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSpaceTriangle.swift; sourceTree = "<group>"; };
-		B418D9082254FE6400157DB4 /* RectInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectInt.swift; sourceTree = "<group>"; };
+		B418D9082254FE6400157DB4 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		B418D90A2254FFCE00157DB4 /* VectorXY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorXY.swift; sourceTree = "<group>"; };
 		B418D90C2255030800157DB4 /* VectorXYZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorXYZ.swift; sourceTree = "<group>"; };
 		B418D90E2255037700157DB4 /* VectorXYW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorXYW.swift; sourceTree = "<group>"; };
 		B418D9102255052900157DB4 /* Point2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point2D.swift; sourceTree = "<group>"; };
+		B42C98A4225A36A00096490B /* Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds.swift; sourceTree = "<group>"; };
 		B430EC84223FCE36006C9FCC /* Object3DReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DReader.swift; sourceTree = "<group>"; };
 		B430EC86223FCEF5006C9FCC /* Object3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3D.swift; sourceTree = "<group>"; };
 		B43CEA8422457ED600F802CF /* LineReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
@@ -162,7 +164,8 @@
 				B418D90A2254FFCE00157DB4 /* VectorXY.swift */,
 				B418D90C2255030800157DB4 /* VectorXYZ.swift */,
 				B418D90E2255037700157DB4 /* VectorXYW.swift */,
-				B418D9082254FE6400157DB4 /* RectInt.swift */,
+				B418D9082254FE6400157DB4 /* Rectangle.swift */,
+				B42C98A4225A36A00096490B /* Bounds.swift */,
 				B43CEA8E224683E200F802CF /* ColorRGB.swift */,
 				B43CEA8A2246824600F802CF /* Point3D.swift */,
 				B418D9102255052900157DB4 /* Point2D.swift */,
@@ -343,9 +346,10 @@
 				B43CEA8522457ED600F802CF /* LineReader.swift in Sources */,
 				B4AD9BAC2232D07600522998 /* RenderView.swift in Sources */,
 				B418D9112255052900157DB4 /* Point2D.swift in Sources */,
-				B418D9092254FE6400157DB4 /* RectInt.swift in Sources */,
+				B418D9092254FE6400157DB4 /* Rectangle.swift in Sources */,
 				B418D9032254FACF00157DB4 /* ScreenSpaceTriangle.swift in Sources */,
 				B43CEA8B2246824600F802CF /* Point3D.swift in Sources */,
+				B42C98A5225A36A00096490B /* Bounds.swift in Sources */,
 				B44B55D6224D1D5A00185074 /* Matrix3x3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

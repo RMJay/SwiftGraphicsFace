@@ -9,9 +9,10 @@
 import Foundation
 
 class Object3D {
-    private let triangles: [Triangle3D]
+    let triangles: [Triangle3D]
     
     init(triangles: [Triangle3D]) {
         self.triangles = triangles
     }
+    
 }

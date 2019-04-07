@@ -20,4 +20,11 @@ struct Point3D {
     func to2D() -> Point2D {
         return Point2D(x: x, y: y)
     }
+    
+    func applying(_ transform: Transform3D) -> Point3D {
+        let m = transform.matrix
+        return Point3D(x: m[0,0]*x + m[0,1]*y + m[0,2]*z + m[0,3],
+                       y: m[1,0]*x + m[1,1]*y + m[1,2]*z + m[1,3],
+                       z: m[2,0]*x + m[2,1]*y + m[2,2]*z + m[2,3])
+    }
 }

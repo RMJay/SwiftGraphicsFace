@@ -9,13 +9,13 @@
 import Foundation
 
 struct Transform3D {
-    private var matrix: Matrix4x4
+    let matrix: Matrix4x4
     
     static var identity: Transform3D {
         return Transform3D(matrix: Matrix4x4.identity)
     }
     
-    private func applying(_ transform: Transform3D) -> Transform3D {
+    func applying(_ transform: Transform3D) -> Transform3D {
         return Transform3D(matrix: Matrix4x4.multiply(transform.matrix, self.matrix))
     }
     
@@ -37,9 +37,9 @@ struct Transform3D {
     
     func translatedBy(tx: Double, ty: Double, tz: Double) -> Transform3D {
         var t = Matrix4x4.identity
-        t[3,0] = tx
-        t[3,1] = ty
-        t[3,2] = tz
+        t[0,3] = tx
+        t[1,3] = ty
+        t[2,3] = tz
         return Transform3D(matrix: Matrix4x4.multiply(t, self.matrix))
     }
     
@@ -48,7 +48,7 @@ struct Transform3D {
         rx[1,1] = cos(θx)
         rx[1,2] = -sin(θx)
         rx[2,1] = sin(θx)
-        rx[2,1] = cos(θx)
+        rx[2,2] = cos(θx)
         var ry = Matrix4x4.identity
         ry[0,0] = cos(θy)
         ry[0,2] = sin(θy)

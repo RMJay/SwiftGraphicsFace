@@ -33,4 +33,5 @@ struct Rectangle {
         let height = maxY - minY
         return Rectangle(minX: minX, minY: minY, width: width, height: height)
     }
+
 }

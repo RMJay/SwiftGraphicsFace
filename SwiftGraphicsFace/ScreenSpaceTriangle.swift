@@ -14,7 +14,7 @@ struct ScreenSpaceTriangle {
     private let normals: [VectorXYZ]
     private let faceNormal: VectorXYZ
     
-    let bounds: Rectangle
+    let bounds: Bounds
     private let isFrontSide: Bool
     private let lines: [VectorXYW]
     
@@ -27,15 +27,9 @@ struct ScreenSpaceTriangle {
         self.colors = colors
         self.normals = normals
         self.faceNormal = faceNormal
-
+        bounds = Bounds.enclosing(points: vertexes)
+        
         let vertexes2D = vertexes.map{ $0.to2D() }
-        
-        let minX = vertexes2D.reduce(Double.infinity){ $1.x < $0 ? $1.x : $0 }
-        let minY = vertexes2D.reduce(Double.infinity){ $1.y < $0 ? $1.y : $0 }
-        let maxX = vertexes2D.reduce(-Double.infinity){ $1.x > $0 ? $1.x : $0 }
-        let maxY = vertexes2D.reduce(-Double.infinity){ $1.y > $0 ? $1.y : $0 }
-        
-        bounds = Rectangle(minX: minX, minY: minY, width: maxX - minX, height: maxY - minY)
         lines = [VectorXYW.lineThrough(vertexes2D[0], vertexes2D[1]),
                  VectorXYW.lineThrough(vertexes2D[1], vertexes2D[2]),
                  VectorXYW.lineThrough(vertexes2D[2], vertexes2D[0])]
@@ -50,8 +44,9 @@ struct ScreenSpaceTriangle {
         invDenom = 1.0 / (d00 * d11 - d01 * d01)
     }
     
-    init(from t: Triangle3D) {
-        self.init(vertexes: t.vertexes, colors: t.colors, normals: t.normals, faceNormal: t.faceNormal)
+    init(from t: Triangle3D, applying transform: Transform3D) {
+        self.init(vertexes: t.vertexes.map{ $0.applying(transform) },
+                  colors: t.colors, normals: t.normals, faceNormal: t.faceNormal)
     }
     
     init(v0: Point3D, v1: Point3D, v2: Point3D) {
@@ -79,6 +74,35 @@ struct ScreenSpaceTriangle {
                 dot2 = x*lines[2].x + y*lines[2].y + w*lines[2].w
                 if dot0 < 0.5 && dot1 < 0.5 && dot2 < 0.5 {
                     pixelContext.setRGB(x: i, y: j, r: color.r, g: color.g, b: color.b)
+                }
+            }
+        }
+    }
+    
+    func drawPolygon(in pixelContext: PixelContext, fill: ColorRGB, stroke: ColorRGB) {
+        let minI = max(0, Int(bounds.minX))
+        let maxI = min(pixelContext.width, Int(bounds.maxX)+1)
+        let minJ = max(0, Int(bounds.minY))
+        let maxJ = min(pixelContext.height, Int(bounds.maxY)+1)
+        
+        guard minI < maxI else { return }
+        guard minJ < maxJ else { return }
+        
+        var x, y, dot0, dot1, dot2: Double
+        let w = 1.0
+        for i in minI..<maxI {
+            x = Double(i)
+            for j in minJ..<maxJ {
+                y = Double(j)
+                dot0 = x*lines[0].x + y*lines[0].y + w*lines[0].w
+                dot1 = x*lines[1].x + y*lines[1].y + w*lines[1].w
+                dot2 = x*lines[2].x + y*lines[2].y + w*lines[2].w
+                if dot0 < 0.5 && dot1 < 0.5 && dot2 < 0.5 {
+                    if dot0 > -0.5 || dot1 > -0.5 || dot2 > -0.5 {
+                        pixelContext.setRGB(x: i, y: j, r: stroke.r, g: stroke.g, b: stroke.b)
+                    } else {
+                        pixelContext.setRGB(x: i, y: j, r: fill.r, g: fill.g, b: fill.b)
+                    }
                 }
             }
         }
