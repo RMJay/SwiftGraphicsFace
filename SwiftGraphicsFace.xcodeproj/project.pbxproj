@@ -21,6 +21,7 @@
 		B43CEA8B2246824600F802CF /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8A2246824600F802CF /* Point3D.swift */; };
 		B43CEA8F224683E200F802CF /* ColorRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CEA8E224683E200F802CF /* ColorRGB.swift */; };
 		B43ECA20224FE7AE00E629C5 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */; };
+		B441FA13225A776E00F2C01A /* BaryCentric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441FA12225A776E00F2C01A /* BaryCentric.swift */; };
 		B44B55D6224D1D5A00185074 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B55D5224D1D5A00185074 /* Matrix3x3.swift */; };
 		B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B7F22317C1D00522998 /* AppDelegate.swift */; };
 		B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD9B8122317C1D00522998 /* ViewController.swift */; };
@@ -68,6 +69,7 @@
 		B43CEA8A2246824600F802CF /* Point3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point3D.swift; sourceTree = "<group>"; };
 		B43CEA8E224683E200F802CF /* ColorRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRGB.swift; sourceTree = "<group>"; };
 		B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix2x2.swift; sourceTree = "<group>"; };
+		B441FA12225A776E00F2C01A /* BaryCentric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaryCentric.swift; sourceTree = "<group>"; };
 		B44B55D5224D1D5A00185074 /* Matrix3x3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix3x3.swift; sourceTree = "<group>"; };
 		B4AD9B7C22317C1D00522998 /* SwiftGraphicsFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGraphicsFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AD9B7F22317C1D00522998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				B43CEA8E224683E200F802CF /* ColorRGB.swift */,
 				B43CEA8A2246824600F802CF /* Point3D.swift */,
 				B418D9102255052900157DB4 /* Point2D.swift */,
+				B441FA12225A776E00F2C01A /* BaryCentric.swift */,
 				B4C97B732247EE08003AB8C7 /* Transform3D.swift */,
 				B43ECA1F224FE7AE00E629C5 /* Matrix2x2.swift */,
 				B44B55D5224D1D5A00185074 /* Matrix3x3.swift */,
@@ -338,6 +341,7 @@
 				B43ECA20224FE7AE00E629C5 /* Matrix2x2.swift in Sources */,
 				B418D90D2255030800157DB4 /* VectorXYZ.swift in Sources */,
 				B4C97B762247FCEA003AB8C7 /* Matrix4x4.swift in Sources */,
+				B441FA13225A776E00F2C01A /* BaryCentric.swift in Sources */,
 				B4AD9B8222317C1D00522998 /* ViewController.swift in Sources */,
 				B4AD9B8022317C1D00522998 /* AppDelegate.swift in Sources */,
 				B430EC85223FCE36006C9FCC /* Object3DReader.swift in Sources */,

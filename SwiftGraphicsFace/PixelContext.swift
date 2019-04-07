@@ -12,12 +12,15 @@ class PixelContext {
     private var _width: Int
     private var _height: Int
     private var pixBuf: UnsafeMutablePointer<UInt32>
+    private var zBuf: UnsafeMutablePointer<Double>
     
     init() {
         _width = 0
         _height = 0
         pixBuf = UnsafeMutablePointer<UInt32>.allocate(capacity: 1)
         pixBuf.initialize(repeating: 0, count: 1)
+        zBuf = UnsafeMutablePointer<Double>.allocate(capacity: 1)
+        zBuf.initialize(repeating: Double.infinity, count: 1)
     }
 
     var width: Int {
@@ -36,6 +39,10 @@ class PixelContext {
         pixBuf.deallocate()
         pixBuf = UnsafeMutablePointer<UInt32>.allocate(capacity: numPixels)
         pixBuf.initialize(repeating: 0, count: numPixels)
+        
+        zBuf.deallocate()
+        zBuf = UnsafeMutablePointer<Double>.allocate(capacity: numPixels)
+        zBuf.initialize(repeating: Double.infinity, count: numPixels)
     }
 
     deinit {
@@ -59,6 +66,14 @@ class PixelContext {
             let b = $0.advanced(by: 3).pointee
             return (r: r, g: g, b: b)
         }
+    }
+    
+    func getBufferedZ(x: Int, y: Int) -> Double {
+        return zBuf.advanced(by: y * width + x).pointee
+    }
+    
+    func setBufferedZ(x: Int, y: Int, z: Double) {
+        zBuf.advanced(by: y * width + x).pointee = z
     }
 
     func getImage() -> CGImage? {

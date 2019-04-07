@@ -88,23 +88,43 @@ struct ScreenSpaceTriangle {
         guard minI < maxI else { return }
         guard minJ < maxJ else { return }
         
-        var x, y, dot0, dot1, dot2: Double
+        var x, y, z, dot0, dot1, dot2: Double
+        var bary: BaryCentric
         let w = 1.0
         for i in minI..<maxI {
             x = Double(i)
             for j in minJ..<maxJ {
                 y = Double(j)
+                bary = baryCentricCoords(x: x, y: y)
+                z = bary[0] * vertexes[0].z + bary[1] * vertexes[1].z + bary[2] * vertexes[2].z
                 dot0 = x*lines[0].x + y*lines[0].y + w*lines[0].w
                 dot1 = x*lines[1].x + y*lines[1].y + w*lines[1].w
                 dot2 = x*lines[2].x + y*lines[2].y + w*lines[2].w
                 if dot0 < 0.5 && dot1 < 0.5 && dot2 < 0.5 {
                     if dot0 > -0.5 || dot1 > -0.5 || dot2 > -0.5 {
-                        pixelContext.setRGB(x: i, y: j, r: stroke.r, g: stroke.g, b: stroke.b)
+                        if z < pixelContext.getBufferedZ(x: i, y: j) {
+                            pixelContext.setRGB(x: i, y: j, r: stroke.r, g: stroke.g, b: stroke.b)
+                            pixelContext.setBufferedZ(x: i, y: j, z: z)
+                        }
                     } else {
-                        pixelContext.setRGB(x: i, y: j, r: fill.r, g: fill.g, b: fill.b)
+                        if z < pixelContext.getBufferedZ(x: i, y: j) {
+                            pixelContext.setRGB(x: i, y: j, r: fill.r, g: fill.g, b: fill.b)
+                            pixelContext.setBufferedZ(x: i, y: j, z: z)
+                        }
                     }
                 }
             }
         }
     }
+    
+    func baryCentricCoords(x: Double, y: Double) -> BaryCentric {
+        let v = VectorXY(x: x - vertexes[0].x, y: y - vertexes[0].y)
+        let d20 = VectorXY.dot(v, v01)
+        let d21 = VectorXY.dot(v, v02)
+        let bary1 = (d11 * d20 - d01 * d21) * invDenom
+        let bary2 = (d00 * d21 - d01 * d20) * invDenom
+        let bary0 = 1.0 - bary1 - bary2
+        return BaryCentric(bary0, bary1, bary2)
+    }
+
 }
