@@ -39,6 +39,10 @@ struct VectorXYZ {
                          z: l.x * r.y - l.y * r.x)
     }
     
+    func length() -> Double {
+        return sqrt(x*x + y*y + z*z)
+    }
+    
     func normalized() -> VectorXYZ {
         return self / sqrt(x*x + y*y + z*z)
     }

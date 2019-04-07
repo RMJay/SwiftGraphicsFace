@@ -127,8 +127,47 @@ struct ScreenSpaceTriangle {
         return BaryCentric(bary0, bary1, bary2)
     }
     
-//    func drawFlat(in pixelContext: PixelContext, lightPosition: Point3D) {
-//        let directionToLightSource = 
-//    }
+    func drawFlat(in pixelContext: PixelContext, lightSource: Point3D) {
+        let minI = max(0, Int(bounds.minX))
+        let maxI = min(pixelContext.width, Int(bounds.maxX)+1)
+        let minJ = max(0, Int(bounds.minY))
+        let maxJ = min(pixelContext.height, Int(bounds.maxY)+1)
+        
+        guard minI < maxI else { return }
+        guard minJ < maxJ else { return }
+        
+        let directionToLightSource = (lightSource - calculateCentroid()).normalized()
+        let dot = VectorXYZ.dot(faceNormal, directionToLightSource)
+        let brightness = dot > 0 ? dot : 0
+        let grey = UInt8(brightness * 255)
+        
+        var x, y, z, dot0, dot1, dot2: Double
+        var bary: BaryCentric
+        let w = 1.0
+        for i in minI..<maxI {
+            x = Double(i)
+            for j in minJ..<maxJ {
+                y = Double(j)
+                bary = baryCentricCoords(x: x, y: y)
+                z = bary[0] * vertexes[0].z + bary[1] * vertexes[1].z + bary[2] * vertexes[2].z
+                dot0 = x*lines[0].x + y*lines[0].y + w*lines[0].w
+                dot1 = x*lines[1].x + y*lines[1].y + w*lines[1].w
+                dot2 = x*lines[2].x + y*lines[2].y + w*lines[2].w
+                if dot0 < 0.5 && dot1 < 0.5 && dot2 < 0.5 {
+                    if z < pixelContext.getBufferedZ(x: i, y: j) {
+                        pixelContext.setRGB(x: i, y: j, r: grey, g: grey, b: grey)
+                        pixelContext.setBufferedZ(x: i, y: j, z: z)
+                    }
+                }
+            }
+        }
+    }
+    
+    func calculateCentroid() -> Point3D {
+        let sumX = vertexes[0].x + vertexes[1].x + vertexes[2].x
+        let sumY = vertexes[0].y + vertexes[1].y + vertexes[2].y
+        let sumZ = vertexes[0].z + vertexes[1].z + vertexes[2].z
+        return Point3D(x: sumX/3, y: sumY/3, z: sumZ/3)
+    }
 
 }

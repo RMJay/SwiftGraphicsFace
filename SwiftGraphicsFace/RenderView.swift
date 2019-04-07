@@ -131,7 +131,7 @@ class RenderView: NSView {
         
         object3D.triangles
             .map{ ScreenSpaceTriangle(from: $0, applying: cameraTransform) }
-            .forEach{ $0.drawPolygon(in: pixelContext, fill: .white, stroke: .maraschino) }
+            .forEach{ $0.drawFlat(in: pixelContext, lightSource: lightSource) }
         
         lightGraphic.triangles
             .map{ $0.applying(lightTransform) }
