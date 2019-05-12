@@ -11,9 +11,12 @@ import Cocoa
 class ViewController: NSViewController, NSWindowDelegate {
     
     @IBOutlet weak var renderView: RenderView!
+    var panStart = CGPoint.zero
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Load face data and generate a 3D object
         guard let vertexDataURL = Bundle.main.url(forResource: "face_vertex_data", withExtension: "txt") else {
             fatalError("\"face_vertex_data.txt\" not found in bundle")
         }
@@ -29,6 +32,11 @@ class ViewController: NSViewController, NSWindowDelegate {
         } catch let error {
             print(error)
         }
+        
+        //Adding observers for user interactions
+        let leftMousePan = NSPanGestureRecognizer(target: self, action: .leftMousePan)
+        leftMousePan.buttonMask = 0b001 //left button
+        renderView.addGestureRecognizer(leftMousePan)
     }
 
     override func viewWillAppear() {
@@ -48,5 +56,31 @@ class ViewController: NSViewController, NSWindowDelegate {
                                   pixelHeight: Double(renderView.bounds.height * pixelScale))
     }
     
+    @objc func leftMousePan(pan: NSPanGestureRecognizer) {
+        let translation = pan.translation(in: renderView)
+        let increment = translation - panStart
+        switch pan.state {
+        case .began, .changed:
+            print("leftMousePan increment[x:\(increment.dx), y:\(increment.dy)]")
+            panStart = translation
+            let θx = Double(-increment.dy / renderView.bounds.width)
+            let θy = Double(-increment.dx / renderView.bounds.width)
+            renderView.rotateBy(θx: θx, θy: θy)
+        case .ended:
+            panStart = CGPoint.zero
+        default: break
+        }
+    }
+    
+}
+
+fileprivate extension Selector {
+    static let leftMousePan = #selector(ViewController.leftMousePan)
+}
+
+fileprivate extension CGPoint {
+    static func - (left: CGPoint, right: CGPoint) -> CGVector {
+        return CGVector(dx: left.x - right.x, dy: left.y - right.y)
+    }
 }
 

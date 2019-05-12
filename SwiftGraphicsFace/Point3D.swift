@@ -16,9 +16,17 @@ struct Point3D {
     static var zero: Point3D {
         return Point3D(x: 0, y: 0, z: 0)
     }
+    
+    static func +(l: Point3D, r: Point3D) -> Point3D {
+        return Point3D(x: l.x+r.x, y: l.y+r.y, z: l.z+r.z)
+    }
+    
+    static func /(l: Point3D, r: Double) -> Point3D {
+        return Point3D(x: l.x/r, y: l.y/r, z: l.z/r)
+    }
 
     static func -(l: Point3D, r: Point3D) -> VectorXYZ {
-        return VectorXYZ(x: l.x - r.x, y: l.y - r.y, z: l.z - r.z)
+        return VectorXYZ(x: l.x-r.x, y: l.y-r.y, z: l.z-r.z)
     }
 
     func to2D() -> Point2D {

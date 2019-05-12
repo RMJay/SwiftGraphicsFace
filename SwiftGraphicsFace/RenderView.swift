@@ -86,9 +86,9 @@ class RenderView: NSView {
         let t1 = ScreenSpaceTriangle(v0: vertexes[3], v1: vertexes[4], v2: vertexes[5])
         let t2 = ScreenSpaceTriangle(v0: vertexes[6], v1: vertexes[7], v2: vertexes[8])
         
-        t0.drawPolygon(in: pixelContext, fill: .white, stroke: .spring)
-        t1.drawPolygon(in: pixelContext, fill: .white, stroke: .maraschino)
-        t2.drawPolygon(in: pixelContext, fill: .white, stroke: .tangerine)
+        t0.drawFilledAndStroked(in: pixelContext, fill: .white, stroke: .spring)
+        t1.drawFilledAndStroked(in: pixelContext, fill: .white, stroke: .maraschino)
+        t2.drawFilledAndStroked(in: pixelContext, fill: .white, stroke: .tangerine)
     }
     
     func centerAndScale(pixelWidth: Double, pixelHeight: Double) {
@@ -131,12 +131,21 @@ class RenderView: NSView {
         
         object3D.triangles
             .map{ ScreenSpaceTriangle(from: $0, applying: cameraTransform) }
+            .filter{ $0.isFrontSide }
             .forEach{ $0.drawFlat(in: pixelContext, lightSource: lightSource) }
         
         lightGraphic.triangles
             .map{ $0.applying(lightTransform) }
             .map{ ScreenSpaceTriangle(from: $0, applying: cameraTransform) }
-            .forEach{ $0.drawPolygon(in: pixelContext, fill: .lemon, stroke: .tangerine) }
+            .filter{ $0.isFrontSide }
+            .forEach{ $0.drawFilledAndStroked(in: pixelContext, fill: .lemon, stroke: .tangerine) }
+        
+        pixelContext.resetZBuffer()
+    }
+    
+    func rotateBy(θx: Double, θy: Double) {
+        rotation = rotation.rotatedBy(θx: θx, θy: θy)
+        setNeedsDisplay(bounds)
     }
     
 }

@@ -30,7 +30,7 @@ struct VectorXYZ {
     }
     
     static func dot(_ l: VectorXYZ, _ r: VectorXYZ) -> Double {
-        return l.x * l.x + l.y * l.y + l.z * l.z
+        return l.x * r.x + l.y * r.y + l.z * r.z
     }
     
     static func cross(_ l: VectorXYZ, _ r: VectorXYZ) -> VectorXYZ {

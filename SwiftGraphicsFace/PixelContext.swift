@@ -100,5 +100,10 @@ class PixelContext {
             return nil
         }
     }
+    
+    func resetZBuffer() {
+        let numPixels = _width * _height
+        zBuf.initialize(repeating: Double.infinity, count: numPixels)
+    }
 
 }
